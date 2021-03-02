@@ -33,3 +33,4 @@ build/
 .vscode/
 
 rebel.xml
+/src/main/resources/rebel.xml
