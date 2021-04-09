@@ -96,6 +96,12 @@
             <artifactId>java-jwt</artifactId>
             <version>3.14.0</version>
         </dependency>
+        <!--整合zookeeper实现分布式锁-->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>5.1.0</version>
+        </dependency>
 
 
         <dependency>
