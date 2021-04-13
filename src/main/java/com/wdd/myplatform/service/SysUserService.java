@@ -9,8 +9,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author wdd
- * @since 2020-12-22
+ * @since 2021-04-13
  */
 public interface SysUserService extends IService<SysUser> {
 
+    /**
+     * "根据登录名查询用户"
+     * @param userName
+     * @return
+     */
+    SysUser getByUserName(String userName);
 }

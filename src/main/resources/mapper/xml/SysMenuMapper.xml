@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdd.myplatform.mapper.SysMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wdd.myplatform.entity.SysMenu">
+        <id column="menu_id" property="menuId" />
+        <result column="pid" property="pid" />
+        <result column="url" property="url" />
+        <result column="permissions" property="permissions" />
+        <result column="type" property="type" />
+        <result column="icon" property="icon" />
+        <result column="sort" property="sort" />
+        <result column="is_important" property="isImportant" />
+        <result column="menu_class" property="menuClass" />
+        <result column="client" property="client" />
+        <result column="show_flag" property="showFlag" />
+        <result column="remark" property="remark" />
+        <result column="creator" property="creator" />
+        <result column="create_date" property="createDate" />
+        <result column="updater" property="updater" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        menu_id, pid, url, permissions, type, icon, sort, is_important, menu_class, client, show_flag, remark, creator, create_date, updater, update_date
+    </sql>
+
+</mapper>

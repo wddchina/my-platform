@@ -5,23 +5,20 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Document(indexName = "esDemo")
+//@Document(indexName = "esDemo")
 public class EsDemoBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "用户ID")
     @TableId(value = "user_id", type = IdType.ASSIGN_ID)
-    @Field(type = FieldType.Keyword)
+//    @Field(type = FieldType.Keyword)
     private Long userId;
 
     @ApiModelProperty(value = "部门ID")
@@ -40,7 +37,7 @@ public class EsDemoBean implements Serializable {
     private String email;
 
     @ApiModelProperty(value = "手机号码")
-    @Field(type = FieldType.Keyword)
+//    @Field(type = FieldType.Keyword)
     private String phonenumber;
 
     @ApiModelProperty(value = "用户性别（0男 1女 2未知）")
@@ -83,7 +80,7 @@ public class EsDemoBean implements Serializable {
     private Date updateTime;
 
     @ApiModelProperty(value = "备注")
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+//    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String remark;
 
 }

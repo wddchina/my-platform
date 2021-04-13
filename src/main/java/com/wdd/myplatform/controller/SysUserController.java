@@ -2,6 +2,7 @@ package com.wdd.myplatform.controller;
 
 
 import com.wdd.myplatform.aop.LogParams;
+import com.wdd.myplatform.common.BaseResult;
 import com.wdd.myplatform.entity.SysUser;
 import com.wdd.myplatform.service.SysUserService;
 import io.swagger.annotations.Api;
@@ -26,19 +27,46 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    /*@Resource
+    private CuratorFramework curatorFramework;*/
+
     @GetMapping("/getById/{id}")
     @ApiOperation("根据id查询用户")
     @LogParams
-    public SysUser getById(@ApiParam(name = "id") @PathVariable(value = "id")String id){
-        return sysUserService.getById(id);
+    public BaseResult<SysUser> getById(@ApiParam(name = "id") @PathVariable(value = "id")String id){
+        SysUser sysUser = sysUserService.getById(id);
+        return BaseResult.success(sysUser);
+    }
+
+    @GetMapping("/getByLoginName")
+    @ApiOperation("根据登录名查询用户")
+    @LogParams
+    public BaseResult<SysUser> getByUserName(
+            @ApiParam(name = "userName",required = true) @RequestParam(value = "userName",required = true) String userName){
+        SysUser sysUser = sysUserService.getByUserName(userName);
+        return BaseResult.success(sysUser);
     }
 
     @PostMapping("/saveUser")
     @ApiOperation("保存用户")
     @LogParams
-    public SysUser saveUser(@RequestBody SysUser sysUser){
+    public BaseResult<SysUser> saveUser(@RequestBody SysUser sysUser){
         sysUserService.saveOrUpdate(sysUser);
-        return sysUser;
+        return BaseResult.success(sysUser);
+        /*InterProcessMutex interProcessMutex = new InterProcessMutex(curatorFramework, "/lock/saveUser");
+        try {
+            interProcessMutex.acquire();
+            sysUserService.saveOrUpdate(sysUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                interProcessMutex.release();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return sysUser;*/
     }
 
 }

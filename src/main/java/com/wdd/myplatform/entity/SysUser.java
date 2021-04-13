@@ -16,7 +16,7 @@ import java.util.Date;
  * </p>
  *
  * @author wdd
- * @since 2020-12-22
+ * @since 2021-04-13
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -32,10 +32,10 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "部门ID")
     private Long deptId;
 
-    @ApiModelProperty(value = "登录账号")
-    private String loginName;
+    @ApiModelProperty(value = "昵称")
+    private String nickName;
 
-    @ApiModelProperty(value = "用户昵称")
+    @ApiModelProperty(value = "用户名称")
     private String userName;
 
     @ApiModelProperty(value = "用户类型（00系统用户 01注册用户）")
@@ -89,5 +89,47 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "备注")
     private String remark;
 
+
+    public static final String USER_ID = "user_id";
+
+    public static final String DEPT_ID = "dept_id";
+
+    public static final String NICK_NAME = "nick_name";
+
+    public static final String USER_NAME = "user_name";
+
+    public static final String USER_TYPE = "user_type";
+
+    public static final String EMAIL = "email";
+
+    public static final String PHONENUMBER = "phonenumber";
+
+    public static final String SEX = "sex";
+
+    public static final String AVATAR = "avatar";
+
+    public static final String PASSWORD = "password";
+
+    public static final String SALT = "salt";
+
+    public static final String STATUS = "status";
+
+    public static final String DEL_FLAG = "del_flag";
+
+    public static final String LOGIN_IP = "login_ip";
+
+    public static final String LOGIN_DATE = "login_date";
+
+    public static final String PWD_UPDATE_DATE = "pwd_update_date";
+
+    public static final String CREATE_BY = "create_by";
+
+    public static final String CREATE_TIME = "create_time";
+
+    public static final String UPDATE_BY = "update_by";
+
+    public static final String UPDATE_TIME = "update_time";
+
+    public static final String REMARK = "remark";
 
 }
