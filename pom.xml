@@ -96,6 +96,18 @@
             <artifactId>java-jwt</artifactId>
             <version>3.14.0</version>
         </dependency>
+        <!--整合shiro-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.theborakompanioni</groupId>
+            <artifactId>thymeleaf-extras-shiro</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!--整合shiro结束-->
         <!--整合zookeeper实现分布式锁-->
         <!--<dependency>
             <groupId>org.apache.curator</groupId>

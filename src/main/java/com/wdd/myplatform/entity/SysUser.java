@@ -132,4 +132,10 @@ public class SysUser implements Serializable {
 
     public static final String REMARK = "remark";
 
+    /**
+     * 密码盐userName+salt作为盐
+     */
+    public String getCredentialsSalt() {
+        return getUserName() + getSalt();
+    }
 }

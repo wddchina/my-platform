@@ -35,10 +35,15 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         }
         if(method.isAnnotationPresent(RequestMapping.class) || method.isAnnotationPresent(GetMapping.class) || method.isAnnotationPresent(PostMapping.class)) {
             String token = request.getHeader("token");
+            if(StringUtils.isBlank(token)){
+                SendMsgUtil.sendJsonMessage(response, BaseResult.error("unauthorized"));;
+                return false;
+            }
             String username = JWTUtil.getUsername(token);
             SysUser sysUser = sysUserService.getByUserName(username);
             if(null == sysUser){
-                throw new RuntimeException("用户不存在，请重新登录");
+                SendMsgUtil.sendJsonMessage(response, BaseResult.error("用户不存在，请确认用户名是否正确"));;
+                return false;
             }
             // TODO: 2021/4/12 验证token
             boolean verify = JWTUtil.verify(token, username, sysUser.getPassword());

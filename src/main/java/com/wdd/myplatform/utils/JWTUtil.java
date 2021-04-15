@@ -24,7 +24,7 @@ public class JWTUtil {
         // 附带username信息
         return JWT.create()
                 .withClaim("username", username)
-                .withExpiresAt(date)
+//                .withExpiresAt(date)
                 .sign(algorithm);
     }
 

@@ -1,7 +1,10 @@
 package com.wdd.myplatform.service;
 
+import com.wdd.myplatform.entity.SysRole;
 import com.wdd.myplatform.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,4 +22,11 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      */
     SysUser getByUserName(String userName);
+
+    /**
+     * 根据用户id查询角色
+     * @param userId
+     * @return
+     */
+    List<SysRole> listRolesByUserId(Long userId);
 }

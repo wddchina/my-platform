@@ -8,6 +8,8 @@ import com.wdd.myplatform.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +35,8 @@ public class SysUserController {
     @GetMapping("/getById/{id}")
     @ApiOperation("根据id查询用户")
     @LogParams
-    public BaseResult<SysUser> getById(@ApiParam(name = "id") @PathVariable(value = "id")String id){
+//    @RequiresPermissions("sys:user:info")
+    public BaseResult<SysUser> getById(@ApiParam(name = "id") @PathVariable(value = "id")String id) throws UnauthorizedException {
         SysUser sysUser = sysUserService.getById(id);
         return BaseResult.success(sysUser);
     }

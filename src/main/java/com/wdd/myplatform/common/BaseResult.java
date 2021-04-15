@@ -58,7 +58,9 @@ public class BaseResult<T> implements Serializable {
     public static <T> BaseResult<T> error(int code, String msg) {
         return new BaseResult<>(code, msg, null);
     }
-
+    public static <T> BaseResult<T> error(int code, String msg,T data) {
+        return new BaseResult<>(code, msg, data);
+    }
     public static <T> BaseResult<T> success(T data) {
         return new BaseResult<>(ResultEnum.SUCCESS.getCode(), SUCCESS_MSG, data);
     }
