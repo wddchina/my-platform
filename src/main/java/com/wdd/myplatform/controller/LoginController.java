@@ -53,7 +53,7 @@ public class LoginController {
             String accessToken = JWTUtil.sign(username, encodedPassword);
             StringBuffer stringBuffer = new StringBuffer();
             stringBuffer.append(Constants.ACCESS_TOKEN).append(":");
-            stringBuffer.append(user.getUserId());
+            stringBuffer.append(user.getId());
             stringRedisTemplate.opsForValue().set(stringBuffer.toString(),accessToken,30, TimeUnit.MINUTES);
             return BaseResult.success(accessToken);
         } else {

@@ -26,8 +26,8 @@ public class SysUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "用户ID")
-    @TableId(value = "user_id", type = IdType.ASSIGN_ID)
-    private Long userId;
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private Long Id;
 
     @ApiModelProperty(value = "部门ID")
     private Long deptId;

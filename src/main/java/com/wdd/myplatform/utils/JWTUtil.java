@@ -3,9 +3,12 @@ package com.wdd.myplatform.utils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
+import java.util.Map;
 
 public class JWTUtil {
     // 过期时间30分钟
@@ -41,7 +44,9 @@ public class JWTUtil {
                 .withClaim("username", username)
                 .build();
         DecodedJWT jwt = verifier.verify(token);
-        return true;
+        Map<String, Claim> claimMap = jwt.getClaims();
+        String claimUserName = claimMap.get("username").asString();
+        return StringUtils.equals(username,claimUserName);
     }
 
     /**

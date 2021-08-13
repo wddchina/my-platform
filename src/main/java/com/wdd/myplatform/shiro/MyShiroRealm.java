@@ -71,7 +71,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         }
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(Constants.ACCESS_TOKEN).append(":");
-        String key = stringBuffer.append(sysUser.getUserId()).toString();
+        String key = stringBuffer.append(sysUser.getId()).toString();
         String redisToken = redisTemplate.opsForValue().get(key);
         //如果redis中存在token,说明token未过期,自动延长7天
         if(StringUtils.equals(redisToken,token)){
@@ -119,8 +119,8 @@ public class MyShiroRealm extends AuthorizingRealm {
         SysUser sysUser = sysUserService.getByUserName(username);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         List<SysRole> sysRoleLists = new ArrayList<>();
-        if(sysUser != null && null != sysUser.getUserId()){
-            sysRoleLists = sysUserService.listRolesByUserId(sysUser.getUserId());
+        if(sysUser != null && null != sysUser.getId()){
+            sysRoleLists = sysUserService.listRolesByUserId(sysUser.getId());
         }
             //设置相应角色的权限信息
             for (SysRole role : sysRoleLists) {

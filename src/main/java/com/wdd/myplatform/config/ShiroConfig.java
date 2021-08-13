@@ -86,6 +86,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/doc.html", "anon");
 
         filterChainDefinitionMap.put("/sys/login", "anon");
+        filterChainDefinitionMap.put("/redLock/testSeckill", "anon");
         // 其他的
         filterChainDefinitionMap.put("/**", "jwt");
 

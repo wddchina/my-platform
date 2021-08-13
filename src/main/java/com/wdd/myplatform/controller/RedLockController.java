@@ -25,13 +25,16 @@ public class RedLockController {
     @GetMapping("/testSeckill")
     @ApiOperation("测试秒杀redLock锁")
     public void testSeckill() throws InterruptedException {
-        String key = "goodsNumKey";
-        RedisLockUtil.lock(key);
-        String num = stringRedisTemplate.opsForValue().get(GOODSNUMKEY);
-        if(Integer.parseInt(num)<=0){
-            return;
+        try {
+            RedisLockUtil.lock("miaosha");
+            String num = stringRedisTemplate.opsForValue().get(GOODSNUMKEY);
+            if(Integer.parseInt(num)<=0){
+                return;
+            }
+            stringRedisTemplate.opsForValue().decrement(GOODSNUMKEY,1);
+            System.out.println(Thread.currentThread().getName()+"-------------"+stringRedisTemplate.opsForValue().get(GOODSNUMKEY));
+        }finally {
+            RedisLockUtil.unlock("miaosha");
         }
-        stringRedisTemplate.opsForValue().decrement(GOODSNUMKEY,1);
-        System.out.println(Thread.currentThread().getName()+"-------------"+stringRedisTemplate.opsForValue().get(GOODSNUMKEY));
     }
 }

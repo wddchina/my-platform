@@ -53,7 +53,7 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
             }
             if(verify){
                 request.setAttribute("token", token);
-                request.setAttribute("UserId", sysUser.getUserId());
+                request.setAttribute("UserId", sysUser.getId());
                 return true;
             }
             /*if(!authenticate.isAuthorized(accessToken)) {
